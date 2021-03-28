@@ -32,9 +32,9 @@ export class CalculatorDisplay extends LitElement {
     }
   }
 
+
   constructor() {
     super();
-
     this.content = '';
   }
 

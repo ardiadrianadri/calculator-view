@@ -23,15 +23,24 @@ export class CalculatorView extends LitElement {
   static get properties() {
     return {
       buttons: { type: Array },
+      calculatorDisplay: { type: String },
       displayValue: { attribute: false }
     };
   }
 
-  constructor() {
-    super();
+  __handleTouchStart(event) {
+    const firstTouch = event.touches[0];
+    this.xDown = firstTouch.clientX;
+  }
 
-    this.displayValue = '';
-    this.buttons = [];
+  __handleTouchMove(event) {
+    if (this.xDown) {
+      const xUp = event.touches[0].clientX;
+
+      if (this.xDown > xUp) {
+        this.displayValue = '';
+      }
+    }
   }
 
   __onButtonPressed(event) {
@@ -54,6 +63,30 @@ export class CalculatorView extends LitElement {
       default:
         this.displayValue = '';
     }
+  }
+
+  constructor() {
+    super();
+
+    this.xDown = null;
+    this.displayValue = '';
+    this.buttons = [];
+    this.__handleTouchStartBind = this.__handleTouchStart.bind(this);
+    this.__handleTouchMoveBind = this.__handleTouchMove.bind(this);
+  }
+
+  set calculatorDisplay(value) {
+    this.displayValue = value;
+  }
+
+  firstUpdated() {
+    this.shadowRoot.querySelector('calculator-display').addEventListener('touchstart', this.__handleTouchStartBind);
+    this.shadowRoot.querySelector('calculator-display').addEventListener('touchmove', this.__handleTouchMoveBind);
+  }
+
+  disconnectedCallback() {
+    this.shadowRoot.querySelector('calculator-display').removeEventListener('touchstart', this.__handleTouchStartBind);
+    this.shadowRoot.querySelector('calculator-display').removeEventListener('touchmove', this.__handleTouchMoveBind);
   }
 
   render() {
