@@ -92,3 +92,23 @@ Sets the width of the medium buttons for a screen width smaller than 768px
 
 ### --button-0-desktop-width:
 Sets the width of the medium bottons for a screen width bigger or equal than 768px
+
+# \<calculator-logic>
+
+## Public attributes:
+
+### calculation:
+Calculation is an object that must have the next attributes:
+
+* **number**: The number used for the calculation
+* **operation**: The calculation that should be applied to the number. This attributes accepts the next values:
+ - **divide**: Calculates the division between the previous number and the current one
+ - **multiply**: Calculates the multiplication between the previous number and the current one
+ - **substract**: Calculates the subtraction between the previous number and the current one
+ - **add**: Calculates the addition between the previous number and the current one
+ - **calculate**: Perform the last calculation and fire the event *result* with the final result
+
+## Public events:
+
+### result:
+This event is fired when a *calculate* operation is intruduced in the **calculation** attribute. The object detail of this event contains the attribute **result** with the final value of all the calculations made for each input value introduced by **calculation**
