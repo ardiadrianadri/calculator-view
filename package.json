@@ -10,7 +10,7 @@
     "start": "web-dev-server",
     "lint": "eslint --ext .js,.html . --ignore-path .gitignore && prettier \"**/*.js\" --check --ignore-path .gitignore",
     "format": "eslint --ext .js,.html . --fix --ignore-path .gitignore && prettier \"**/*.js\" --write --ignore-path .gitignore",
-    "build": "rimraf dist && rollup -c rollup.config.js"
+    "build": "rimraf *.bundled.js && rollup -c rollup.config.js"
   },
   "dependencies": {
     "lit-element": "^2.4.0",
