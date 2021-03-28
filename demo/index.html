@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <style>
+    :root {
+        --calcultor-mobile-width: 385px;
+        --calculator-desktop-width: 411px;
+        --display-mobile-height: 102px;
+        --display-desktop-height: 60px;
+        --display-mobile-font-size: 42px;
+        --display-font-color: #000000;
+        --diplay-background-color: #007800;
+        --color-background-calculator: #262626;
+        --calculator-margin: 12px;
+        --general-border-radius: 4px;
+        --button-margin: 6px;
+        --button-mobile-width: 84px;
+        --button-desktop-width: 89px;
+        --button-mobile-height: 82px;
+        --button-desktop-height: 60px;
+        --button-font-size: 31px;
+        --button-font-color: #ffffff;
+        --button-background-color: #3A3A3A;
+        --button-press-background-color: #A3A3A3;
+        --button-clear-mobile-width: 277px;
+        --button-clear-desktop-width: 291px;
+        --button-0-mobile-width: 181px;
+        --button-0-desktop-width: 190px;
+      }
+  </style>
+</head>
+<body>
+  <div id="demo"></div>
+
+  <script type="module">
+    import { html, render } from 'lit-html';
+    import '../calculator-view.js';
+
+    const buttons = [
+      {
+        label: 'C',
+        type: 'clear',
+        value: 'clear',
+        size: 'big',
+        keys: ['c', 'C', 'Backspace']
+      },
+      {
+        label: '/',
+        type: 'operation',
+        value: 'divide',
+        size: 'small',
+        keys: ['/']
+      },
+      {
+        label: '7',
+        type: 'number',
+        value: '7',
+        size: 'small',
+        keys: ['7']
+      },
+      {
+        label: '8',
+        type: 'number',
+        value: '8',
+        size: 'small',
+        keys: ['8']
+      },{
+        label: '9',
+        type: 'number',
+        value: '9',
+        size: 'small',
+        keys: ['9']
+      },{
+        label: '*',
+        type: 'operation',
+        value: 'multiply',
+        size: 'small',
+        keys: ['*']
+      },{
+        label: '4',
+        type: 'number',
+        value: '4',
+        size: 'small',
+        keys: ['4']
+      },{
+        label: '5',
+        type: 'number',
+        value: '5',
+        size: 'small',
+        keys: ['5']
+      },{
+        label: '6',
+        type: 'number',
+        value: '6',
+        size: 'small',
+        keys: ['6']
+      },{
+        label: '-',
+        type: 'operation',
+        value: 'subtract',
+        size: 'small',
+        keys: ['-']
+      },{
+        label: '1',
+        type: 'number',
+        value: '1',
+        size: 'small',
+        keys: ['1']
+      },{
+        label: '2',
+        type: 'number',
+        value: '2',
+        size: 'small',
+        keys: ['2']
+      },{
+        label: '3',
+        type: 'number',
+        value: '3',
+        size: 'small',
+        keys: ['3']
+      },{
+        label: '+',
+        type: 'operation',
+        value: 'add',
+        size: 'small',
+        keys: ['+']
+      },{
+        label: '0',
+        type: 'number',
+        value: '0',
+        size: 'medium',
+        keys: ['0']
+      },{
+        label: '.',
+        type: 'number',
+        value: '.',
+        size: 'small',
+        keys: ['.']
+      },{
+        label: '=',
+        type: 'operation',
+        value: 'calculate',
+        size: 'small',
+        keys: ['=']
+      }
+    ];
+
+    const onCalcButton = (event) => {
+      console.log(event);
+    }
+
+    render(
+      html`
+        <calculator-view
+          .buttons=${buttons}
+          @calc-event=${onCalcButton}
+        ></calculator-view>
+      `,
+      document.querySelector('#demo')
+    );
+  </script>
+</body>
+</html>
